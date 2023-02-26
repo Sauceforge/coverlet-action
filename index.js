@@ -100,7 +100,10 @@ try {
     );    
   }
 
-  core.setOutput("coverageFile", coverageFile);
+  fs.appendFileSync(process.env.GITHUB_OUTPUT,`coverageFile=${coverageFile}`, {
+    encoding: 'utf8'
+  });  
+  //core.setOutput("coverageFile", coverageFile);
 
   console.log("coverlet test done.");
 } catch (error) {
