@@ -135,10 +135,13 @@ try {
   /****************************************/
 
   const testPath = path.dirname(testProject);
-  const coverageFile = `${testPath}/${output}`;
+  const coverageFile = path.join(testPath, output);
 
 
   if (!fs.existsSync(coverageFile)) {
+	  fs.readdirSync(testPath).forEach(file => {
+  console.log(file);
+});
     core.setFailed(
       `error occured : coverage file not found at ${coverageFile}`
     );    
